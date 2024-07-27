@@ -1,0 +1,8 @@
+script exercise12_2.txt
+Script started, file is exercise12_2.txt
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+docker run -it ubuntu
+root@...:/# mkdir /usr/src/app
+root@...:/# touch /usr/src/app/index.js
+root@...:/# exit
