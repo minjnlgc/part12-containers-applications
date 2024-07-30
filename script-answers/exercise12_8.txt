@@ -1,0 +1,123 @@
+Script started on 2024-07-30 16:50:03+01:00 [TERM="dumb" TTY="/dev/pts/3" COLUMNS="126" LINES="17"]
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ docker-  co
+<OneDrive/Desktop/part12-containers-applications/todo-app/todo-backend$ docker con                                         tainer -s  ls
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS              PORTS                     NAMES
+cb8c5c49dc1e   a72860cb95fd   "/docker-entrypoint.…"   40 minutes ago   Up 40 minutes       0.0.0.0:8080->80/tcp      angry_jones
+536495cd4578   mongo          "docker-entrypoint.s…"   3 hours ago      Up About a minute   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ 
+                                                                                                                                      
+                                                                                                                                                   
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ docker exec -it todo-backend-mo
+<ve/Desktop/part12-containers-applications/todo-app/todo-backend$ docker exec -it todo-backend-mon                                               go-1 bash
+[?2004hroot@536495cd4578:/# [7mmongosh[27mmongosh
+[?2004l
+]0;mongosh mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	66a90bf16abca906ca149f47
+Connecting to:		[1m[32mmongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10[0m
+Using MongoDB:		7.0.12
+[1m[33mUsing Mongosh[0m:		2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+[1G[0J [1G[1G[0Jtest> [7G
+
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+[1G[0Jtest> [7G
+
+[?2004hroot@536495cd4578:/# mongosh -u root -p example[1@T[1@E[1@R[1@M[1@=[1@d[1@um[1@m[1@b[1@ 
+[?2004l
+Current Mongosh Log ID:	66a90c2d217b036817149f47
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10
+Using MongoDB:		7.0.12
+Using Mongosh:		2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-07-30T15:48:59.143+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-07-30T15:48:59.969+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2024-07-30T15:48:59.969+00:00: vm.max_map_count is too low
+------
+
+test> show dbs
+
+admin         100.00 KiB
+config        108.00 KiB
+local          72.00 KiB
+the_database   72.00 KiB
+test> use the_database
+
+switched to db the_database
+the_database> show collections
+
+todos
+the_database> db.todos.find({})
+
+[
+  {
+    _id: ObjectId('66a8e3d7ac81866b2b149f48'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('66a8e3d7ac81866b2b149f49'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('66a8e9906b72a963f85a2d12'),
+    text: 'learn about docker',
+    done: true,
+    __v: 0
+  }
+]
+
+the_database> db.todos.insertOne({"text":"Increase the number of tools in my tool belt", done:false})
+
+{
+  acknowledged: true,
+  insertedId: ObjectId('66a90cb8217b036817149f48')
+}
+
+the_database> db.todos.find({})
+
+[
+  {
+    _id: ObjectId('66a8e3d7ac81866b2b149f48'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('66a8e3d7ac81866b2b149f49'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('66a8e9906b72a963f85a2d12'),
+    text: 'learn about docker',
+    done: true,
+    __v: 0
+  },
+  {
+    _id: ObjectId('66a90cb8217b036817149f48'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> exit
+
+[?2004hroot@536495cd4578:/# exit
+[?2004l
+exit
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-mongo-1
+  Learn more at https://docs.docker.com/go/debug-cli/
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ exit
+exit
+
+Script done on 2024-07-30 16:55:14+01:00 [COMMAND_EXIT_CODE="0"]
