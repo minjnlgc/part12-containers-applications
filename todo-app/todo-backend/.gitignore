@@ -63,4 +63,5 @@ typings/
 # data
 mongo_data/
 
-#docker
+#redis
+redis_data/
