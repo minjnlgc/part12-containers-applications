@@ -1,0 +1,267 @@
+Script started on 2024-08-02 15:13:30+01:00 [TERM="dumb" TTY="/dev/pts/3" COLUMNS="163" LINES="17"]
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ docker - pas  s -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                    PORTS                     NAMES
+60215d3edcbd   mongo          "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes             0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+cc4adf49a799   redis          "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes             0.0.0.0:6379->6379/tcp    todo-backend-redis-1
+cb8c5c49dc1e   a72860cb95fd   "/docker-entrypoint.…"   2 days ago       Exited (0) 2 days ago                               angry_jones
+80a8a2443b20   todo-backend   "docker-entrypoint.s…"   4 days ago       Exited (137) 4 days ago                             todo-backend-app-1
+0ea6dbb9c721   todo-backend   "docker-entrypoint.s…"   4 days ago       Exited (137) 4 days ago                             thirsty_stonebraker
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ docker execit     c -it todo-backend-redis-1 basg
+OCI runtime exec failed: exec failed: unable to start container process: exec: "basg": executable file not found in $PATH: unknown
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-redis-1
+  Learn more at https://docs.docker.com/go/debug-cli/
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ docker exec -it todo-backend-redis-1 basg h
+[?2004hroot@cc4adf49a799:/data# cl  cl  redis-cli
+[?2004l
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> K
+[17C
+[0K127.0.0.1:6379> KE
+[18C
+[0K127.0.0.1:6379> KEY
+[19C
+[0K127.0.0.1:6379> KEYS
+[20C
+[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m
+[21C
+[0K127.0.0.1:6379> KEYS y[0;90;49m pattern[0m
+[22C
+[0K127.0.0.1:6379> KEYS [0;90;49mpattern[0m
+[21C
+[0K127.0.0.1:6379> KEYS t[0;90;49m pattern[0m
+[22C
+[0K127.0.0.1:6379> KEYS to[0;90;49m pattern[0m
+[23C
+[0K127.0.0.1:6379> KEYS tod[0;90;49m pattern[0m
+[24C
+[0K127.0.0.1:6379> KEYS todo[0;90;49m pattern[0m
+
+[0K127.0.0.1:6379> KEYS todos[0;90;49m pattern[0m
+[26C
+[0K127.0.0.1:6379> KEYS todos
+[26C
+1) "todos"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> E
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET t[0;90;49m key[0m
+[21C
+[0K127.0.0.1:6379> GET to[0;90;49m key[0m
+[22C
+[0K127.0.0.1:6379> GET tod[0;90;49m key[0m
+[23C
+[0K127.0.0.1:6379> GET todo[0;90;49m key[0m
+[24C
+[0K127.0.0.1:6379> GET todos[0;90;49m key[0m
+
+[0K127.0.0.1:6379> GET todos
+
+"1"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> S
+[17C
+[0K127.0.0.1:6379> SE
+[18C
+[0K127.0.0.1:6379> SET
+[19C
+[0K127.0.0.1:6379> SET [0;90;49mkey value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[20C
+[0K127.0.0.1:6379> SET T[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[21C
+[0K127.0.0.1:6379> SET TO[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[22C
+[0K127.0.0.1:6379> SET TOD[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[23C
+[0K127.0.0.1:6379> SET TO[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[22C
+[0K127.0.0.1:6379> SET T[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[21C
+[0K127.0.0.1:6379> SET [0;90;49mkey value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[20C
+[0K127.0.0.1:6379> SET t[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[21C
+[0K127.0.0.1:6379> SET to[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[22C
+[0K127.0.0.1:6379> SET tod[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[23C
+[0K127.0.0.1:6379> SET todo[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[24C
+[0K127.0.0.1:6379> SET todos[0;90;49m key value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+
+[0K127.0.0.1:6379> SET todos [0;90;49mvalue [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[26C
+[0K127.0.0.1:6379> SET todos 8[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[27C
+[0K127.0.0.1:6379> SET todos [0;90;49mvalue [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[26C
+[0K127.0.0.1:6379> SET todos 9[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[27C
+[0K127.0.0.1:6379> SET todos 90[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[28C
+[0K127.0.0.1:6379> SET todos 900[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[29C
+[0K127.0.0.1:6379> SET todos 9001[0;90;49m value [NX|XX] [GET] [EX seconds|PX milliseconds|EXAT unix-time-seconds|PXAT unix-time-milliseconds|KEEPTTL][0m
+[30C
+[0K127.0.0.1:6379> SET todos 9001
+[30C
+OK
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET t[0;90;49m key[0m
+[21C
+[0K127.0.0.1:6379> GET to[0;90;49m key[0m
+[22C
+[0K127.0.0.1:6379> GET tod[0;90;49m key[0m
+[23C
+[0K127.0.0.1:6379> GET todo[0;90;49m key[0m
+[24C
+[0K127.0.0.1:6379> GET todos[0;90;49m key[0m
+
+[0K127.0.0.1:6379> GET todos
+
+"9001"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> g
+[17C
+[0K127.0.0.1:6379> ge
+[18C
+[0K127.0.0.1:6379> get
+[19C
+[0K127.0.0.1:6379> ge
+[18C
+[0K127.0.0.1:6379> g
+[17C
+[0K127.0.0.1:6379> 
+[16C
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET t[0;90;49m key[0m
+[21C
+[0K127.0.0.1:6379> GET to[0;90;49m key[0m
+[22C
+[0K127.0.0.1:6379> GET tod[0;90;49m key[0m
+[23C
+[0K127.0.0.1:6379> GET todo[0;90;49m key[0m
+[24C
+[0K127.0.0.1:6379> GET todos[0;90;49m key[0m
+
+[0K127.0.0.1:6379> GET todos
+
+"9002"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> D
+[17C
+[0K127.0.0.1:6379> DE
+[18C
+[0K127.0.0.1:6379> DEL
+[19C
+[0K127.0.0.1:6379> DEL [0;90;49mkey [key ...][0m
+[20C
+[0K127.0.0.1:6379> DEL t[0;90;49m key [key ...][0m
+[21C
+[0K127.0.0.1:6379> DEL to[0;90;49m key [key ...][0m
+[22C
+[0K127.0.0.1:6379> DEL tod[0;90;49m key [key ...][0m
+[23C
+[0K127.0.0.1:6379> DEL todo[0;90;49m key [key ...][0m
+[24C
+[0K127.0.0.1:6379> DEL todos[0;90;49m key [key ...][0m
+
+[0K127.0.0.1:6379> DEL todos
+
+(integer) 1
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET t[0;90;49m key[0m
+[21C
+[0K127.0.0.1:6379> GET to[0;90;49m key[0m
+[22C
+[0K127.0.0.1:6379> GET tod[0;90;49m key[0m
+[23C
+[0K127.0.0.1:6379> GET todo[0;90;49m key[0m
+[24C
+[0K127.0.0.1:6379> GET todos[0;90;49m key[0m
+
+[0K127.0.0.1:6379> GET todos
+
+(nil)
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> G
+[17C
+[0K127.0.0.1:6379> GE
+[18C
+[0K127.0.0.1:6379> GET
+[19C
+[0K127.0.0.1:6379> GET [0;90;49mkey[0m
+[20C
+[0K127.0.0.1:6379> GET t[0;90;49m key[0m
+[21C
+[0K127.0.0.1:6379> GET to[0;90;49m key[0m
+[22C
+[0K127.0.0.1:6379> GET tod[0;90;49m key[0m
+[23C
+[0K127.0.0.1:6379> GET todo[0;90;49m key[0m
+[24C
+[0K127.0.0.1:6379> GET todos[0;90;49m key[0m
+
+[0K127.0.0.1:6379> GET todos
+
+"1"
+127.0.0.1:6379> 
+[0K127.0.0.1:6379> e
+[17C
+[0K127.0.0.1:6379> ex
+[18C
+[0K127.0.0.1:6379> ext
+[19C
+[0K127.0.0.1:6379> ex
+[18C
+[0K127.0.0.1:6379> exi
+[19C
+[0K127.0.0.1:6379> exit
+[20C
+[0K127.0.0.1:6379> exit
+[20C
+[?2004hroot@cc4adf49a799:/data# exit
+[?2004l
+exit
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-redis-1
+  Learn more at https://docs.docker.com/go/debug-cli/
+...@DESKTOP-...:/mnt/c/Users/.../part12-containers-applications/todo-app/todo-backend$ exit
+exit
+
+Script done on 2024-08-02 15:18:19+01:00 [COMMAND_EXIT_CODE="0"]
