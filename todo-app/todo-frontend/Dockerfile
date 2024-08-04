@@ -12,6 +12,12 @@ RUN npm ci
 
 RUN npm run build
 
+# test stage
+FROM build-stage AS test-stage
+
+RUN npm run test
+
+# serve stage
 FROM nginx:1.25-alpine
 
 COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
